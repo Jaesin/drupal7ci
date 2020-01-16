@@ -1,5 +1,5 @@
 # This Dockerfile is a modified version of https://github.com/docker-library/drupal/blob/bee08efba505b740a14d68254d6e51af7ab2f3ea/7/Dockerfile#L6-9
-FROM php:5.6.40-apache
+FROM php:7.3-apache
 
 RUN a2enmod rewrite
 
@@ -30,7 +30,7 @@ RUN sed -ri -e 's!/var/www/html!/var/www/html/docroot!g' /etc/apache2/sites-avai
 RUN sed -ri -e 's!/var/www!/var/www/html/docroot!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
 
 # Install XDebug.
-RUN pecl install xdebug-2.5.5 \
+RUN pecl install xdebug \
     && docker-php-ext-enable xdebug
 
 # Install Dockerize.
