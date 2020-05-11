@@ -18,7 +18,7 @@ RUN apt-get update && apt-get install -y \
     wget \
 	&& rm -rf /var/lib/apt/lists/* \
 	&& docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
-	&& docker-php-ext-install gd mbstring mysqli pdo pdo_mysql pdo_pgsql
+	&& docker-php-ext-install bcmath gd mbstring mysqli pdo pdo_mysql pdo_pgsql
 
 WORKDIR /var/www/html
 
