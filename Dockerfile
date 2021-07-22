@@ -1,5 +1,5 @@
 # This Dockerfile is a modified version of https://github.com/docker-library/drupal/blob/bee08efba505b740a14d68254d6e51af7ab2f3ea/7/Dockerfile#L6-9
-FROM php:7.3-apache
+FROM php:7.4-apache
 
 RUN a2enmod rewrite
 
@@ -10,6 +10,7 @@ RUN apt-get update && apt-get install -y \
     libjpeg-dev \
     libmagickwand-dev \
     libpq-dev \
+    libonig-dev \
     mariadb-client \
     rsync \
     sudo \
@@ -17,7 +18,7 @@ RUN apt-get update && apt-get install -y \
     vim \
     wget \
 	&& rm -rf /var/lib/apt/lists/* \
-	&& docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
+	&& docker-php-ext-configure gd --with-jpeg \
 	&& docker-php-ext-install bcmath gd mbstring mysqli pdo pdo_mysql pdo_pgsql
 
 WORKDIR /var/www/html
